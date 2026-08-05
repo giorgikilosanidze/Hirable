@@ -1,0 +1,480 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════════════════════════
+   Hirable design tokens.
+   Source of truth: design_handoff_hirable/tokens.css in the Claude
+   Design project. Dark mode is driven by data-theme="dark" on <html>.
+   Raw ramps are fixed; only the semantic layer changes per theme.
+   ═══════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── Palette ───────────────────────────────────────────── */
+  --slate-50: #f7f8fa;
+  --slate-100: #f1f3f7;
+  --slate-200: #e8ebf0;
+  --slate-300: #dce0e8;
+  --slate-400: #c3c9d4;
+  --slate-500: #9aa2b2;
+  --slate-600: #737c90;
+  --slate-700: #4a5163;
+  --slate-800: #2c3243;
+  --slate-900: #1a1f2e;
+  --slate-950: #101422;
+  --indigo-50: #eef0fe;
+  --indigo-100: #e0e3fd;
+  --indigo-200: #c7cbfb;
+  --indigo-300: #a5a7f8;
+  --indigo-400: #8482f3;
+  --indigo-500: #6563ec;
+  --indigo-600: #4f46e5;
+  --indigo-700: #4338ca;
+  --indigo-800: #3730a3;
+  --indigo-900: #2e2a7c;
+  --teal-50: #e9f8f5;
+  --teal-100: #cfefe9;
+  --teal-500: #0ea593;
+  --teal-600: #0d8577;
+  --green-50: #e9f7ee;
+  --green-500: #1ba351;
+  --green-600: #15833f;
+  --amber-50: #fdf4e4;
+  --amber-500: #d08700;
+  --amber-600: #a96c00;
+  --red-50: #fdecec;
+  --red-500: #e04343;
+  --red-600: #c22f2f;
+
+  /* ── Semantic surfaces ─────────────────────────────────── */
+  --bg-canvas: var(--slate-50);
+  --bg-surface: #ffffff;
+  --bg-subtle: var(--slate-100);
+  --bg-muted: var(--slate-200);
+  --bg-inverse: var(--slate-950);
+  --bg-overlay: rgba(16, 20, 34, 0.44);
+
+  --border-subtle: var(--slate-200);
+  --border-default: var(--slate-300);
+  --border-strong: var(--slate-400);
+
+  --text-primary: var(--slate-950);
+  --text-secondary: var(--slate-700);
+  --text-tertiary: var(--slate-600);
+  --text-disabled: var(--slate-500);
+  --text-inverse: #ffffff;
+
+  --accent: var(--indigo-600);
+  --accent-hover: var(--indigo-700);
+  --accent-active: var(--indigo-800);
+  --accent-text: var(--indigo-700);
+  --accent-subtle: var(--indigo-50);
+  --accent-border: var(--indigo-200);
+  --accent-on: #ffffff;
+
+  /* AI surfaces — anything machine-generated sits on these */
+  --ai-1: #4f46e5;
+  --ai-2: #0ea593;
+  --ai-surface: linear-gradient(180deg, #f4f4fe 0%, #f2faf9 100%);
+  --ai-border: #d5d6fa;
+  --ai-text: var(--indigo-700);
+
+  --success: var(--green-500);
+  --success-text: var(--green-600);
+  --success-subtle: var(--green-50);
+  --warning: var(--amber-500);
+  --warning-text: var(--amber-600);
+  --warning-subtle: var(--amber-50);
+  --danger: var(--red-500);
+  --danger-text: var(--red-600);
+  --danger-subtle: var(--red-50);
+  --info: var(--indigo-600);
+  --info-text: var(--indigo-700);
+  --info-subtle: var(--indigo-50);
+
+  --shadow-xs: 0 1px 2px rgba(16, 20, 34, 0.05);
+  --shadow-sm: 0 1px 2px rgba(16, 20, 34, 0.05), 0 1px 3px rgba(16, 20, 34, 0.04);
+  --shadow-md: 0 2px 4px rgba(16, 20, 34, 0.04), 0 6px 14px rgba(16, 20, 34, 0.06);
+  --shadow-lg: 0 4px 8px rgba(16, 20, 34, 0.04), 0 16px 32px rgba(16, 20, 34, 0.1);
+  --shadow-xl: 0 8px 16px rgba(16, 20, 34, 0.06), 0 28px 56px rgba(16, 20, 34, 0.14);
+  --ring: 0 0 0 3px rgba(79, 70, 229, 0.2);
+
+  --skeleton: linear-gradient(90deg, var(--slate-100) 0%, var(--slate-200) 40%, var(--slate-100) 80%);
+
+  /* Surfaces that only the marketing + auth shells use. */
+  --logo-bg: var(--slate-950);
+  --panel-dark: var(--slate-950);
+  --nav-bg: color-mix(in srgb, var(--bg-canvas) 84%, transparent);
+}
+
+:root[data-theme="dark"] {
+  --bg-canvas: #0b0e16;
+  --bg-surface: #141926;
+  --bg-subtle: #1b2230;
+  --bg-muted: #252e40;
+  --bg-inverse: #edf0f6;
+  --bg-overlay: rgba(4, 6, 12, 0.66);
+
+  --border-subtle: #222a39;
+  --border-default: #2e3849;
+  --border-strong: #414c63;
+
+  --text-primary: #edf0f6;
+  --text-secondary: #a8b1c4;
+  --text-tertiary: #7b859c;
+  --text-disabled: #5a6478;
+  --text-inverse: #0b0e16;
+
+  --accent: #7b79ff;
+  --accent-hover: #9694ff;
+  --accent-active: #6462f0;
+  --accent-text: #a9a8ff;
+  --accent-subtle: #1a1d36;
+  --accent-border: #33356b;
+  --accent-on: #0b0e16;
+
+  --ai-1: #7b79ff;
+  --ai-2: #2dd4bf;
+  --ai-surface: linear-gradient(180deg, #171a33 0%, #12262a 100%);
+  --ai-border: #333764;
+  --ai-text: #a9a8ff;
+
+  --success: #34d399;
+  --success-text: #4ade80;
+  --success-subtle: #0e2a21;
+  --warning: #f2b33d;
+  --warning-text: #f5c563;
+  --warning-subtle: #2e2410;
+  --danger: #f27272;
+  --danger-text: #f58c8c;
+  --danger-subtle: #331717;
+  --info: #7b79ff;
+  --info-text: #a9a8ff;
+  --info-subtle: #1a1d36;
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.32), 0 6px 14px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.34), 0 16px 32px rgba(0, 0, 0, 0.48);
+  --shadow-xl: 0 8px 16px rgba(0, 0, 0, 0.4), 0 28px 56px rgba(0, 0, 0, 0.56);
+  --ring: 0 0 0 3px rgba(123, 121, 255, 0.28);
+
+  --skeleton: linear-gradient(90deg, #1b2230 0%, #252e40 40%, #1b2230 80%);
+
+  --logo-bg: #252e40;
+  --panel-dark: #171c2b;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   Tailwind theme mapping.
+
+   Naming rule: the `bg-` utility already says "background", so surface
+   tokens drop that prefix (`--bg-surface` → `bg-surface`). Text and
+   border tokens keep theirs, because `--bg-subtle` and `--border-subtle`
+   are different values and would otherwise collide.
+   ═══════════════════════════════════════════════════════════════════ */
+
+@theme inline {
+  --font-sans: var(--font-instrument-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+
+  /* Palette */
+  --color-slate-50: var(--slate-50);
+  --color-slate-100: var(--slate-100);
+  --color-slate-200: var(--slate-200);
+  --color-slate-300: var(--slate-300);
+  --color-slate-400: var(--slate-400);
+  --color-slate-500: var(--slate-500);
+  --color-slate-600: var(--slate-600);
+  --color-slate-700: var(--slate-700);
+  --color-slate-800: var(--slate-800);
+  --color-slate-900: var(--slate-900);
+  --color-slate-950: var(--slate-950);
+  --color-indigo-50: var(--indigo-50);
+  --color-indigo-100: var(--indigo-100);
+  --color-indigo-200: var(--indigo-200);
+  --color-indigo-300: var(--indigo-300);
+  --color-indigo-400: var(--indigo-400);
+  --color-indigo-500: var(--indigo-500);
+  --color-indigo-600: var(--indigo-600);
+  --color-indigo-700: var(--indigo-700);
+  --color-indigo-800: var(--indigo-800);
+  --color-indigo-900: var(--indigo-900);
+  --color-teal-50: var(--teal-50);
+  --color-teal-100: var(--teal-100);
+  --color-teal-500: var(--teal-500);
+  --color-teal-600: var(--teal-600);
+
+  /* Surfaces */
+  --color-canvas: var(--bg-canvas);
+  --color-surface: var(--bg-surface);
+  --color-subtle: var(--bg-subtle);
+  --color-muted: var(--bg-muted);
+  --color-inverse: var(--bg-inverse);
+  --color-overlay: var(--bg-overlay);
+  --color-panel-dark: var(--panel-dark);
+  --color-logo-bg: var(--logo-bg);
+  --color-nav: var(--nav-bg);
+
+  /* Borders */
+  --color-border-subtle: var(--border-subtle);
+  --color-border-default: var(--border-default);
+  --color-border-strong: var(--border-strong);
+
+  /* Text */
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+  --color-text-disabled: var(--text-disabled);
+  --color-text-inverse: var(--text-inverse);
+
+  /* Accent */
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-active: var(--accent-active);
+  --color-accent-text: var(--accent-text);
+  --color-accent-subtle: var(--accent-subtle);
+  --color-accent-border: var(--accent-border);
+  --color-accent-on: var(--accent-on);
+
+  /* AI */
+  --color-ai-border: var(--ai-border);
+  --color-ai-text: var(--ai-text);
+
+  /* Status */
+  --color-success: var(--success);
+  --color-success-text: var(--success-text);
+  --color-success-subtle: var(--success-subtle);
+  --color-warning: var(--warning);
+  --color-warning-text: var(--warning-text);
+  --color-warning-subtle: var(--warning-subtle);
+  --color-danger: var(--danger);
+  --color-danger-text: var(--danger-text);
+  --color-danger-subtle: var(--danger-subtle);
+  --color-info: var(--info);
+  --color-info-text: var(--info-text);
+  --color-info-subtle: var(--info-subtle);
+
+  /* Type scale — see the handoff README. `overline` and `data*` are
+     mono; pair them with `font-mono` (and `uppercase` for overline). */
+  --text-display-xl: 56px;
+  --text-display-xl--line-height: 1.04;
+  --text-display-xl--letter-spacing: -0.035em;
+  --text-display-xl--font-weight: 600;
+  --text-display-l: 44px;
+  --text-display-l--line-height: 1.08;
+  --text-display-l--letter-spacing: -0.03em;
+  --text-display-l--font-weight: 600;
+  --text-h1: 32px;
+  --text-h1--line-height: 1.15;
+  --text-h1--letter-spacing: -0.022em;
+  --text-h1--font-weight: 600;
+  --text-h2: 24px;
+  --text-h2--line-height: 1.25;
+  --text-h2--letter-spacing: -0.018em;
+  --text-h2--font-weight: 600;
+  --text-h3: 19px;
+  --text-h3--line-height: 1.35;
+  --text-h3--letter-spacing: -0.012em;
+  --text-h3--font-weight: 600;
+  --text-body-lg: 17px;
+  --text-body-lg--line-height: 1.6;
+  --text-body-lg--letter-spacing: -0.005em;
+  --text-body-lg--font-weight: 400;
+  --text-body: 15px;
+  --text-body--line-height: 1.6;
+  --text-body--font-weight: 400;
+  --text-body-sm: 13.5px;
+  --text-body-sm--line-height: 1.55;
+  --text-body-sm--font-weight: 400;
+  --text-label: 13px;
+  --text-label--line-height: 1.3;
+  --text-label--font-weight: 500;
+  --text-caption: 12px;
+  --text-caption--line-height: 1.45;
+  --text-caption--letter-spacing: 0.004em;
+  --text-caption--font-weight: 400;
+  --text-overline: 11px;
+  --text-overline--line-height: 1.2;
+  --text-overline--letter-spacing: 0.09em;
+  --text-overline--font-weight: 600;
+  --text-data: 13px;
+  --text-data--line-height: 1.45;
+  --text-data--letter-spacing: -0.01em;
+  --text-data--font-weight: 500;
+  --text-data-hero: 38px;
+  --text-data-hero--line-height: 1;
+  --text-data-hero--letter-spacing: -0.04em;
+  --text-data-hero--font-weight: 600;
+
+  /* Radius */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+
+  /* Elevation */
+  --shadow-xs: var(--shadow-xs);
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-xl: var(--shadow-xl);
+  --shadow-ring: var(--ring);
+
+  /* Motion */
+  --ease-standard: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-entrance: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+
+  --animate-hb-rise: hb-rise 260ms cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-hb-fade: hb-fade 180ms ease;
+  --animate-hb-slide: hb-slide 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-hb-ring: hb-ring 900ms cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-hb-caret: hb-caret 1s steps(1) infinite;
+  --animate-hb-float: hb-float 4.5s ease-in-out infinite;
+  --animate-hb-bob: hb-bob 1s ease-in-out infinite;
+  --animate-hb-shimmer: hb-shimmer 1.4s linear infinite;
+
+  /* The design system has one breakpoint: 900px. `md` is it. */
+  --breakpoint-md: 900px;
+}
+
+/* ── Signature animations ─────────────────────────────────── */
+@keyframes hb-shimmer {
+  0% {
+    background-position: -320px 0;
+  }
+  100% {
+    background-position: 320px 0;
+  }
+}
+@keyframes hb-pulse {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+@keyframes hb-rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes hb-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes hb-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* Panels that enter from the right edge (follow-up drawer). */
+@keyframes hb-slide {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: none;
+  }
+}
+@keyframes hb-caret {
+  0%,
+  45% {
+    opacity: 1;
+  }
+  55%,
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes hb-sweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(220%);
+  }
+}
+@keyframes hb-ring {
+  from {
+    stroke-dashoffset: 339;
+  }
+}
+@keyframes hb-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+@keyframes hb-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+/* ── Utilities the token layer can't express as a colour ──── */
+
+/* AI surfaces are a gradient, not a flat colour. */
+@utility bg-ai-surface {
+  background-image: var(--ai-surface);
+}
+
+/* The rotated gradient chip that marks generated content. */
+@utility ai-diamond {
+  background-image: linear-gradient(135deg, var(--ai-1), var(--ai-2));
+  transform: rotate(45deg);
+}
+
+@layer base {
+  body {
+    background: var(--bg-canvas);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Base-layer, so any colour/decoration utility on a link still wins. */
+  a {
+    color: var(--accent-text);
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
+  }
+
+  ::selection {
+    background: var(--accent-border);
+    color: var(--text-primary);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
