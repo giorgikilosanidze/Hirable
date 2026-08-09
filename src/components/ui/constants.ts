@@ -23,6 +23,8 @@ export const BUTTON_SIZES = {
   appSm: "h-[34px] gap-[7px] rounded-[9px] px-3 text-[13px]",
   appMd: "h-9 gap-2 rounded-[9px] px-[14px] text-[13.5px]",
   appLg: "h-[38px] gap-2 rounded-md px-[14px] text-[13.5px]",
+  /** Square, icon-only. Carries its own padding so nothing squeezes it. */
+  appIcon: "size-9 rounded-[9px] p-0",
 } as const;
 
 export const BUTTON_BASE =

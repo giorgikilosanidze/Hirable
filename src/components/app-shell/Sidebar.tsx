@@ -5,7 +5,7 @@ import { Plus } from "lucide-react";
 import Logo from "@/components/brand/Logo";
 import { PLAN } from "@/components/plan/constants";
 import ThemeToggle from "@/components/theme/ThemeToggle";
-import Button from "@/components/ui/Button";
+import ButtonLink from "@/components/ui/ButtonLink";
 import SidebarNavItem from "./SidebarNavItem";
 import { NAV_ITEMS, USER } from "./constants";
 
@@ -18,10 +18,10 @@ export default function Sidebar() {
         <Logo size={28} wordmarkSize={16} gap={10} />
       </div>
 
-      <Button size="appLg" className="shadow-sm">
+      <ButtonLink href="/analyze" size="appLg" className="shadow-sm">
         <Plus size={16} strokeWidth={1.75} />
         New analysis
-      </Button>
+      </ButtonLink>
 
       <div className="flex flex-col gap-0.5">
         {NAV_ITEMS.map((item) => (

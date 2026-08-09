@@ -15,3 +15,11 @@ export type StatusMeta = {
   dot: string;
   chip: string;
 };
+
+export type Stat = {
+  label: string;
+  value: string;
+  note: string;
+  /** A text-colour utility, so the number can carry its own meaning. */
+  color: string;
+};

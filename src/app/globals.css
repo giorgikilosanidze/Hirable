@@ -332,6 +332,9 @@
   --animate-hb-caret: hb-caret 1s steps(1) infinite;
   --animate-hb-float: hb-float 4.5s ease-in-out infinite;
   --animate-hb-bob: hb-bob 1s ease-in-out infinite;
+  --animate-hb-pulse: hb-pulse 1.4s ease-in-out infinite;
+  --animate-hb-grow: hb-grow 900ms cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-hb-spin: hb-spin 700ms linear infinite;
   --animate-hb-shimmer: hb-shimmer 1.4s linear infinite;
 
   /* The design system has one breakpoint: 900px. `md` is it. */
@@ -411,6 +414,12 @@
     stroke-dashoffset: 339;
   }
 }
+/* Meter fills sweep out from zero width. */
+@keyframes hb-grow {
+  from {
+    width: 0;
+  }
+}
 @keyframes hb-bob {
   0%,
   100% {
@@ -435,6 +444,12 @@
 /* AI surfaces are a gradient, not a flat colour. */
 @utility bg-ai-surface {
   background-image: var(--ai-surface);
+}
+
+/* Shimmering placeholder blocks, sized for the hb-shimmer sweep. */
+@utility bg-skeleton {
+  background-image: var(--skeleton);
+  background-size: 320px 100%;
 }
 
 /* The rotated gradient chip that marks generated content. */

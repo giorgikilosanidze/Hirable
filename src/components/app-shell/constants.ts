@@ -9,21 +9,22 @@ import {
 import type { NavItem } from "./types";
 
 /**
- * The canonical six, per the design handoff. Tracker, Resume and Cover
- * letters have no href yet — those screens come in later sessions, and
- * the prototype leaves them inert rather than linking nowhere.
+ * The canonical six, per the design handoff. Cover letters points at the
+ * one drafted letter — the handoff has an editor but no letters index,
+ * so there is nothing to list yet.
  */
 export const NAV_ITEMS: NavItem[] = [
   { key: "home", label: "Home", icon: LayoutDashboard, href: "/dashboard" },
   { key: "analyses", label: "Analyses", icon: Target, count: "14", href: "/analyses" },
-  { key: "tracker", label: "Tracker", icon: Columns3, count: "6" },
-  { key: "resume", label: "Resume", icon: FileText },
+  { key: "tracker", label: "Tracker", icon: Columns3, count: "6", href: "/tracker" },
+  { key: "resume", label: "Resume", icon: FileText, href: "/resume" },
   {
     key: "letters",
     label: "Cover letters",
     shortLabel: "Letters",
     icon: Mail,
     count: "4",
+    href: "/letters/stripe",
   },
   { key: "settings", label: "Settings", icon: Settings, href: "/settings" },
 ];

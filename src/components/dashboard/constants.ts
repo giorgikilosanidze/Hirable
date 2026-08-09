@@ -1,12 +1,12 @@
 import { CalendarX, Clock, Send } from "lucide-react";
 import { ANALYSES } from "@/components/analyses/constants";
+import type { Stat } from "@/components/ui/types";
 import type {
   FirstRunStep,
   FollowUpKey,
   FollowUpThread,
   FollowUpTone,
   RecentAnalysis,
-  Stat,
   Task,
 } from "./types";
 

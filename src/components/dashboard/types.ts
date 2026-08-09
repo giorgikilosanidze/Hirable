@@ -1,13 +1,6 @@
 import type { LucideIcon } from "lucide-react";
 import type { ApplicationStatus } from "@/components/ui/types";
 
-export type Stat = {
-  label: string;
-  value: string;
-  note: string;
-  color: string;
-};
-
 export type Task = {
   id: string;
   icon: LucideIcon;

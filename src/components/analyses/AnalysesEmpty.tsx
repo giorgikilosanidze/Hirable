@@ -21,7 +21,7 @@ export default function AnalysesEmpty() {
           Each one keeps the posting, the score, the requirements you missed, and
           any letter you wrote from it.
         </p>
-        <ButtonLink href="/dashboard" size="appLg" className="px-[15px] shadow-sm">
+        <ButtonLink href="/analyze" size="appLg" className="px-[15px] shadow-sm">
           <Plus size={15} strokeWidth={1.75} />
           Paste a job description
         </ButtonLink>

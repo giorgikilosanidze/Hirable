@@ -5,14 +5,15 @@ import DayOneHome from "@/components/dashboard/DayOneHome";
 import NeedsYou from "@/components/dashboard/NeedsYou";
 import RecentAnalyses from "@/components/dashboard/RecentAnalyses";
 import ResumeCard from "@/components/dashboard/ResumeCard";
-import StatCards from "@/components/dashboard/StatCards";
 import {
   HOME_COLUMNS,
+  STATS,
   TODAY_LABEL,
   WORTH_REMEMBERING,
 } from "@/components/dashboard/constants";
 import PlanUsageCard from "@/components/plan/PlanUsageCard";
 import Button from "@/components/ui/Button";
+import StatCards from "@/components/ui/StatCards";
 
 export const metadata: Metadata = {
   title: "Home — Hirable",
@@ -46,7 +47,7 @@ export default async function DashboardPage({ searchParams }: PageProps<"/dashbo
             </Button>
           </div>
 
-          <StatCards />
+          <StatCards stats={STATS} className="mb-[22px]" />
 
           <div className={HOME_COLUMNS}>
             <div className="flex min-w-0 flex-col gap-[18px]">

@@ -8,6 +8,8 @@ type Props = {
   company: string;
   when: string;
   status: ApplicationStatus;
+  /** Given an onClick, the row becomes a button. */
+  onClick?: () => void;
 };
 
 /** The stacked-card row that replaces the table below 900px. */
@@ -17,9 +19,14 @@ export default function AnalysisListItem({
   company,
   when,
   status,
+  onClick,
 }: Props) {
-  return (
-    <div className="flex items-center gap-3 border-b border-border-subtle px-[14px] py-[13px]">
+  const className = `flex w-full items-center gap-3 border-b border-border-subtle px-[14px] py-[13px] text-left ${
+    onClick ? "cursor-pointer hover:bg-subtle" : ""
+  }`;
+
+  const content = (
+    <>
       <span
         className={`inline-flex size-[38px] flex-none items-center justify-center rounded-md bg-subtle font-mono text-[14px] font-semibold ${scoreBandClass(score)}`}
       >
@@ -36,6 +43,14 @@ export default function AnalysisListItem({
         </span>
       </span>
       <StatusChip status={status} />
-    </div>
+    </>
+  );
+
+  if (!onClick) return <div className={className}>{content}</div>;
+
+  return (
+    <button type="button" onClick={onClick} className={className}>
+      {content}
+    </button>
   );
 }

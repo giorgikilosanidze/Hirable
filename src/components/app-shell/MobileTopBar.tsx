@@ -1,7 +1,7 @@
 import { Plus } from "lucide-react";
 import Logo from "@/components/brand/Logo";
 import ThemeToggle from "@/components/theme/ThemeToggle";
-import Button from "@/components/ui/Button";
+import ButtonLink from "@/components/ui/ButtonLink";
 
 export default function MobileTopBar() {
   return (
@@ -12,10 +12,10 @@ export default function MobileTopBar() {
         iconSize={15}
         className="border-border-subtle text-text-tertiary hover:border-border-default hover:text-text-primary"
       />
-      <Button size="appSm" className="gap-1.5">
+      <ButtonLink href="/analyze" size="appSm" className="gap-1.5">
         <Plus size={15} strokeWidth={1.75} />
         New
-      </Button>
+      </ButtonLink>
     </header>
   );
 }

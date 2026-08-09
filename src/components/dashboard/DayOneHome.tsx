@@ -1,5 +1,5 @@
 import { ClipboardType, FileText, Plus } from "lucide-react";
-import Button from "@/components/ui/Button";
+import ButtonLink from "@/components/ui/ButtonLink";
 import { FIRST_RUN_STEPS, HOME_COLUMNS, TODAY_LABEL } from "./constants";
 
 /** Home before anything has been scored. */
@@ -30,10 +30,14 @@ export default function DayOneHome() {
               Takes about twenty seconds. Five free this month.
             </span>
           </span>
-          <Button size="appLg" className="ml-auto h-10 px-4 text-[14px] shadow-sm">
+          <ButtonLink
+            href="/analyze"
+            size="appLg"
+            className="ml-auto h-10 px-4 text-[14px] shadow-sm"
+          >
             <Plus size={16} strokeWidth={1.75} />
             Paste a job description
-          </Button>
+          </ButtonLink>
         </div>
 
         <div className="flex flex-col gap-[9px] border-t border-border-subtle pt-[14px]">

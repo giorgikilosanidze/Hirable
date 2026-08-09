@@ -7,6 +7,9 @@ type Props = {
   strokeWidth?: number;
   trackColor?: string;
   progressColor?: string;
+  /** Draws a second, muted arc behind — what the score could become. */
+  projectedScore?: number;
+  projectedColor?: string;
   children: ReactNode;
 };
 
@@ -20,6 +23,8 @@ export default function ScoreRing({
   strokeWidth = 12,
   trackColor = "var(--bg-muted)",
   progressColor = "var(--accent)",
+  projectedScore,
+  projectedColor = "var(--accent-border)",
   children,
 }: Props) {
   const offset = SCORE_RING_CIRCUMFERENCE * (1 - score / 100);
@@ -41,6 +46,21 @@ export default function ScoreRing({
           stroke={trackColor}
           strokeWidth={strokeWidth}
         />
+        {projectedScore !== undefined && (
+          <circle
+            cx="66"
+            cy="66"
+            r="54"
+            fill="none"
+            stroke={projectedColor}
+            strokeWidth={strokeWidth}
+            strokeLinecap="round"
+            strokeDasharray={SCORE_RING_CIRCUMFERENCE}
+            strokeDashoffset={
+              SCORE_RING_CIRCUMFERENCE * (1 - projectedScore / 100)
+            }
+          />
+        )}
         <circle
           cx="66"
           cy="66"
