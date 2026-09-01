@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import type { SessionUser } from "@/components/app-shell/types";
 import SegmentedControl from "@/components/ui/SegmentedControl";
 import AccountTab from "./AccountTab";
 import ConfirmDeleteDialog from "./ConfirmDeleteDialog";
@@ -13,9 +14,18 @@ import type { DangerKey, SettingsTab } from "./types";
 type Props = {
   initialTab: SettingsTab;
   isPro: boolean;
+  user: SessionUser;
+  providers: string[];
+  googleEnabled: boolean;
 };
 
-export default function SettingsView({ initialTab, isPro }: Props) {
+export default function SettingsView({
+  initialTab,
+  isPro,
+  user,
+  providers,
+  googleEnabled,
+}: Props) {
   const [tab, setTab] = useState<SettingsTab>(initialTab);
   const [confirming, setConfirming] = useState<DangerKey | null>(null);
 
@@ -38,7 +48,13 @@ export default function SettingsView({ initialTab, isPro }: Props) {
       />
 
       {tab === "resume" && <ResumeTab />}
-      {tab === "account" && <AccountTab />}
+      {tab === "account" && (
+        <AccountTab
+          user={user}
+          providers={providers}
+          googleEnabled={googleEnabled}
+        />
+      )}
       {tab === "plan" && <PlanTab isPro={isPro} />}
       {tab === "data" && <DataTab onConfirm={setConfirming} />}
 

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Plus } from "lucide-react";
 import Logo from "@/components/brand/Logo";
@@ -7,9 +8,15 @@ import { PLAN } from "@/components/plan/constants";
 import ThemeToggle from "@/components/theme/ThemeToggle";
 import ButtonLink from "@/components/ui/ButtonLink";
 import SidebarNavItem from "./SidebarNavItem";
-import { NAV_ITEMS, USER } from "./constants";
+import { NAV_ITEMS } from "./constants";
+import type { SessionUser } from "./types";
+import { initialsFrom } from "./utils";
 
-export default function Sidebar() {
+type Props = {
+  user: SessionUser;
+};
+
+export default function Sidebar({ user }: Props) {
   const pathname = usePathname();
 
   return (
@@ -34,12 +41,22 @@ export default function Sidebar() {
       </div>
 
       <div className="mt-auto flex items-center gap-2.5 border-t border-border-subtle p-1.5 pt-3">
-        <span className="inline-flex size-[30px] flex-none items-center justify-center rounded-full bg-muted text-[11.5px] font-semibold text-text-secondary">
-          {USER.initials}
-        </span>
+        {user.image ? (
+          <Image
+            src={user.image}
+            alt=""
+            width={30}
+            height={30}
+            className="size-[30px] flex-none rounded-full object-cover"
+          />
+        ) : (
+          <span className="inline-flex size-[30px] flex-none items-center justify-center rounded-full bg-muted text-[11.5px] font-semibold text-text-secondary">
+            {initialsFrom(user)}
+          </span>
+        )}
         <span className="min-w-0 flex-1">
           <span className="block truncate text-[13px] font-medium text-text-primary">
-            {USER.name}
+            {user.name}
           </span>
           <span className="block text-[11.5px] text-text-tertiary">{PLAN.label}</span>
         </span>

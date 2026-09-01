@@ -1,15 +1,23 @@
 "use client";
 
 import { useState } from "react";
-import { USER } from "@/components/app-shell/constants";
+import { linkGoogle, logout } from "@/app/actions/auth";
+import type { SessionUser } from "@/components/app-shell/types";
 import Button from "@/components/ui/Button";
 import Toggle from "@/components/ui/Toggle";
 import { CARD_CLASS, NOTIFICATIONS, SETTINGS_FIELD_CLASS } from "./constants";
 import type { NotificationKey } from "./types";
 
-export default function AccountTab() {
-  const [name, setName] = useState(USER.name);
-  const [email, setEmail] = useState(USER.email);
+type Props = {
+  user: SessionUser;
+  /** Better Auth provider ids — "credential" means email and password. */
+  providers: string[];
+  googleEnabled: boolean;
+};
+
+export default function AccountTab({ user, providers, googleEnabled }: Props) {
+  const [name, setName] = useState(user.name);
+  const [email, setEmail] = useState(user.email);
   const [enabled, setEnabled] = useState<Record<NotificationKey, boolean>>(() =>
     Object.fromEntries(
       NOTIFICATIONS.map((n) => [n.key, n.defaultOn])
@@ -47,16 +55,50 @@ export default function AccountTab() {
         <div className="flex items-center gap-3 border-t border-border-subtle pt-[14px]">
           <span className="min-w-0 flex-1">
             <span className="block text-[13.5px] font-medium">
-              Signed in with Google
+              Signed in with {providers.includes("google") ? "Google" : "email"}
             </span>
-            <span className="mt-0.5 block text-[12.5px] text-text-tertiary">
-              {USER.email} · connected 3 days ago
+            <span className="mt-0.5 block truncate text-[12.5px] text-text-tertiary">
+              {user.email}
             </span>
           </span>
-          <Button variant="secondary" size="appXs" className="h-8 text-[13px]">
-            Set a password instead
-          </Button>
+          <form action={logout}>
+            <Button
+              type="submit"
+              variant="secondary"
+              size="appXs"
+              className="h-8 text-[13px]"
+            >
+              Sign out
+            </Button>
+          </form>
         </div>
+
+        {/* Merging happens here rather than on the login screen: linking
+            while signed in is what proves this account is yours. */}
+        {!providers.includes("google") && (
+          <div className="flex items-center gap-3 border-t border-border-subtle pt-[14px]">
+            <span className="min-w-0 flex-1">
+              <span className="block text-[13.5px] font-medium">
+                Connect your Google account
+              </span>
+              <span className="mt-0.5 block text-[12.5px] text-text-tertiary">
+                Sign in either way afterwards — same account, same board.
+              </span>
+            </span>
+            <form action={linkGoogle}>
+              <Button
+                type="submit"
+                variant="secondary"
+                size="appXs"
+                className="h-8 text-[13px]"
+                disabled={!googleEnabled}
+                title={googleEnabled ? undefined : "Coming soon"}
+              >
+                Connect Google
+              </Button>
+            </form>
+          </div>
+        )}
       </div>
 
       <div className={`${CARD_CLASS} overflow-hidden`}>

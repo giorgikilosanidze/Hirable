@@ -28,7 +28,7 @@ export const BUTTON_SIZES = {
 } as const;
 
 export const BUTTON_BASE =
-  "inline-flex flex-none cursor-pointer items-center justify-center border font-medium whitespace-nowrap transition-all duration-140 ease-standard focus-visible:shadow-ring focus-visible:outline-none";
+  "inline-flex flex-none cursor-pointer items-center justify-center border font-medium whitespace-nowrap transition-all duration-140 ease-standard focus-visible:shadow-ring focus-visible:outline-none disabled:pointer-events-none disabled:opacity-55";
 
 export const EYEBROW_PILL_VARIANTS = {
   ai: "border-ai-border bg-ai-surface text-ai-text",

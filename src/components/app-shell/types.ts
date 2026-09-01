@@ -1,5 +1,13 @@
 import type { LucideIcon } from "lucide-react";
 
+/** The slice of the signed-in user the shell and settings render. */
+export type SessionUser = {
+  name: string;
+  email: string;
+  /** Avatar from an OAuth provider. Null for email/password accounts. */
+  image?: string | null;
+};
+
 export type NavItem = {
   key: string;
   label: string;

@@ -32,6 +32,12 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
+
+# Prisma installs its agent skills into .agents/ and symlinks them here with
+# absolute paths, which break on any other machine. The real files live in
+# .agents/ and are committed; these pointers are regenerated locally.
+.claude/skills/
 
 # vercel
 .vercel
@@ -39,3 +45,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+/src/generated/prisma

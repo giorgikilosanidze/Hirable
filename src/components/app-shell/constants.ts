@@ -34,9 +34,3 @@ export const BOTTOM_NAV_KEYS = ["home", "analyses", "tracker", "letters", "setti
 
 export const MAIN_PADDING =
   "px-4 pt-4 pb-[92px] md:px-[clamp(20px,3vw,32px)] md:pt-[clamp(20px,3vw,30px)] md:pb-11";
-
-export const USER = {
-  name: "Alex Chen",
-  initials: "AC",
-  email: "alex.chen@gmail.com",
-};
